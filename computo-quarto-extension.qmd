@@ -1,0 +1,430 @@
+---
+title: "Computo Journal Format"
+subtitle: "To be used as template for contribution to Computo"
+date: 01/02/2023
+date-modified: last-modified
+author:
+  - name: The Computo Team
+    corresponding: true
+    email: computo@sfds.asso.fr
+    url: https://computo.sfds.asso.fr
+    orcid: 0000-0000-0000-0000
+    affiliations:
+      - name: Société Française de Statistique
+        department: Statistique
+        address: IHP
+        city: Paris
+        country: France
+        postal-code: 75005
+  - name: a friend
+    affiliations:
+      - Another Affiliation
+description: |
+  This document provides a template based on the quarto system for contributions to Computo. The github repository in itself provides a specific quarto extension useful for authors (and editors!).
+keywords: [template, quarto, R, Python, reproductibility]
+doi: 10.xxxx/xxx-xxx
+citation:
+  type: article-journal
+  container-title: "Computo"
+  doi: "10.xxxx/xxx-xxx"
+  url: "https://github.com/computorg/computo-quarto-extension"
+  issn: "2824-7795"
+bibliography: references.bib
+google-scholar: true
+github-user: computorg
+repo: "computo-quarto-extension"
+draft: true # set to false once the build is running
+published: false # will be set to true once accepted
+format:
+  computo-pdf: default
+  computo-html: default
+---
+
+# Abstract
+
+This is the abstract - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere vestibulum facilisis. Aenean pretium orci augue, quis lobortis libero accumsan eu. Nam mollis lorem sit amet pellentesque ullamcorper. Curabitur lobortis libero eget malesuada vestibulum. Nam nec nibh massa. Pellentesque porttitor cursus tellus. Mauris urna erat, rhoncus sed faucibus sit amet, venenatis eu ipsum.
+
+# About this document
+
+This document provides a template based on the [quarto system](https://quarto.org/) for contributions to **Computo** [@computo]. We show how `Python` [@perez2011python] or  `R` [@R-base] code can be included.
+
+# Formatting
+
+This section covers basic formatting guidelines. [Quarto](https://quarto.org/) is a versatile  formatting system for authoring HTML based on markdown, integrating {{< latex >}} and various code block interpreted either via Jupyter or Knitr (and thus deal with Python, R and many other langages). It relies on the [Pandoc Markdown](https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) markup language. 
+
+:::{.callout-note}
+We will only give some formatting elements. Authors can refer to the [Quarto web page](https://quarto.org/) for a complete view of the formatting possibilities.
+:::
+
+:::{.callout-note}
+Quarto itself is a work-in-progress and a lot of bugs are constantly fixed or features added. As such, we recommend:
+
+- searching any encountered issue with renders in [the upstream quarto dev repo](https://github.com/quarto-dev/quarto-cli/issues)
+- using a [version of quarto > 1.2](https://github.com/quarto-dev/quarto-cli/releases)
+:::
+
+To render/compile a document, run `quarto render`. A document will be generated that includes both content as well as the output of any embedded code chunks within the document:
+
+``` .bash
+quarto render content.qmd # will render to html
+```
+
+## Basic markdown formatting
+
+**Bold text** or _italic_
+
+- This is a list
+- With more elements
+- It isn't numbered.
+
+But we can also do a numbered list
+
+1. This is my first item
+2. This is my second item
+3. This is my third item
+
+## Mathematics
+
+### Mathematical formulae
+
+[{{< latex >}}](https://www.latex-project.org/) code is natively supported[^katex], which makes it possible to use mathematical formulae:
+
+[^katex]: We use [katex](https://katex.org/) for this purpose.
+
+will render
+
+$$
+f(x_1, \dots, x_n; \mu, \sigma^2) =
+\frac{1}{\sigma \sqrt{2\pi}} \exp{\left(- \frac{1}{2\sigma^2}\sum_{i=1}^n(x_i - \mu)^2\right)}
+$$
+
+It is also posible to cross-reference an equation, see @eq-mylabel:
+
+$$
+\begin{aligned}
+D_{x_N} & = \frac12
+\left[\begin{array}{cc}
+x_L^\top & x_N^\top \end{array}\right] \,
+\left[\begin{array}{cc}  L_L & B \\ B^\top & L_N \end{array}\right] \,
+\left[\begin{array}{c}
+x_L \\ x_N \end{array}\right] \\
+& = \frac12 (x_L^\top L_L x_L + 2 x_N^\top B^\top x_L + x_N^\top L_N x_N),
+\end{aligned}
+$$ {#eq-mylabel}
+
+### Theorems and other amsthem-like environments
+
+Quarto includes a nice support for theorems, with predefined prefix labels for theorems, lemmas, proposition, etc. see [this page](https://quarto.org/docs/authoring/cross-references.html#theorems-and-proofs). Here is a simple example:
+
+::: {#thm-slln}
+### Strong law of large numbers
+
+The sample average converges almost surely to the expected value:
+
+$$\overline{X}_n\ \xrightarrow{\text{a.s.}}\ \mu \qquad\textrm{when}\ n \to \infty.$$
+:::
+
+See @thm-slln.
+
+## Code
+
+Quarto uses either Jupyter or knitr to render code chunks. This can be triggered in the yaml header, e.g., for Jupyter (should be installed on your computer) use
+
+``` yaml
+---
+title: "My Document"
+author "Jane Doe"
+jupyter: python3
+---
+```
+
+For knitr (R + knitr must be installed on your computer)
+
+``` yaml
+---
+title: "My Document"
+author "Jane Doe"
+---
+```
+
+You can use Jupyter for Python code and more. And R + KnitR for if you want to mix R with Python (via the package reticulate @R-reticulate).
+
+### R
+
+`R` code [@R-base] chunks may be embedded as follows:
+
+```{r r-code, echo=TRUE}
+x <- rnorm(10)
+```
+
+
+### Python
+
+```{python}
+#| label: fig-plotly
+#| fig-cap: "A simple python plotly example"
+import plotly.express as px
+df = px.data.tips()
+fig = px.histogram(df, x="total_bill", y="tip", color="sex",
+                   marginal="box", # or violin, rug
+                   hover_data=df.columns)
+fig
+```
+
+## Figures
+
+Plots can be generated as follows and referenced. See plot @fig-gg:
+
+```{r}
+#| label: fig-gg
+#| fig-cap: "A simple ggplot example"
+#| message: false
+library("ggplot2")
+p <- ggplot(mpg, aes(displ, hwy)) +
+  geom_point() +
+  geom_smooth() + theme_bw()
+p
+```
+
+Interactive plots may also be produced in the HTML output of the document^[The pdf output is just a screenshot of the interactive plot from the html output]:
+
+```{r}
+#| label: fig-ggplotly
+#| fig-cap: "A simple ggplotly interactive example"
+#| message: false
+#| warning: false
+library("plotly")
+ggplotly(p)
+```
+
+It is also possible to create figures from static images:
+
+:::{#fig-logo}
+
+![](figures/sfds.png)
+
+SFdS logo (c.a. 2021)
+
+:::
+
+## Tables
+
+### Markdown syntax
+
+Tables (with label: `@tbl-mylabel` renders @tbl-mylabel) can be generated with markdown as follows
+
+```markdown
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+: my table caption {#tbl-mylabel}
+```
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+: my table caption {#tbl-mylabel}
+
+### List-table filter
+
+We also integrate the [list tables](https://github.com/pandoc/lua-filters/tree/master/list-table) filter from Pandoc, so that you may alternatively use this format , easier to write and maintain:
+
+```markdown
+:::list-table
+   * - row 1, column 1
+     - row 1, column 2
+     - row 1, column 3
+
+   * - row 2, column 1
+     -
+     - row 2, column 3
+
+   * - row 3, column 1
+     - row 3, column 2
+:::
+```
+
+:::list-table
+   * - row 1, column 1
+     - row 1, column 2
+     - row 1, column 3
+
+   * - row 2, column 1
+     -
+     - row 2, column 3
+
+   * - row 3, column 1
+     - row 3, column 2
+:::
+
+### Table generated from code
+
+Table can also be generated by some code, for instance with ```knitr``` here:
+
+```{r cars}
+knitr::kable(summary(cars), caption = "Table caption.")
+```
+
+## Algorithms
+
+A solution to typeset pseudocode just like you would do with {{< latex >}}, yet with HTML output is to rely on the JavaScript [pseudocode.js](https://github.com/SaswatPadhi/pseudocode.js). Your pseudocode is written inside a [Code Block](https://quarto.org/docs/authoring/markdown-basics.html#source-code) with the `pseudocode` class. Do not forget the class tag, that will trigger the rendering process of your pseudo-code. The result is as follows^[For proper pdf rendering, use [Camel cased](https://en.wikipedia.org/wiki/Camel_case) names for all `algorithmic` keywords, not upper case ones, like the examples in `pseudocode.js`’s documentation, which are not compatible with LaTeX.]:
+
+````markdown
+```pseudocode
+#| label: alg-quicksort
+#| html-indent-size: "1.2em"
+#| html-comment-delimiter: "//"
+#| html-line-number: true
+#| html-line-number-punc: ":"
+#| html-no-end: false
+#| pdf-placement: "htb!"
+#| pdf-line-number: true
+
+\begin{algorithm}
+\caption{Quicksort}
+\begin{algorithmic}
+\Procedure{Quicksort}{$A, p, r$}
+  \If{$p < r$}
+    \State $q = $ \Call{Partition}{$A, p, r$}
+    \State \Call{Quicksort}{$A, p, q - 1$}
+    \State \Call{Quicksort}{$A, q + 1, r$}
+  \EndIf
+\EndProcedure
+\Procedure{Partition}{$A, p, r$}
+  \State $x = A[r]$
+  \State $i = p - 1$
+  \For{$j = p, \dots, r - 1$}
+    \If{$A[j] < x$}
+      \State $i = i + 1$
+      \State exchange
+      $A[i]$ with     $A[j]$
+    \EndIf
+    \State exchange $A[i]$ with $A[r]$
+  \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+```
+````
+
+```pseudocode
+#| label: alg-quicksort
+#| html-indent-size: "1.2em"
+#| html-comment-delimiter: "//"
+#| html-line-number: true
+#| html-line-number-punc: ":"
+#| html-no-end: false
+#| pdf-placement: "htb!"
+#| pdf-line-number: true
+
+\begin{algorithm}
+\caption{Quicksort}
+\begin{algorithmic}
+\Procedure{Quicksort}{$A, p, r$}
+  \If{$p < r$}
+    \State $q = $ \Call{Partition}{$A, p, r$}
+    \State \Call{Quicksort}{$A, p, q - 1$}
+    \State \Call{Quicksort}{$A, q + 1, r$}
+  \EndIf
+\EndProcedure
+\Procedure{Partition}{$A, p, r$}
+  \State $x = A[r]$
+  \State $i = p - 1$
+  \For{$j = p, \dots, r - 1$}
+    \If{$A[j] < x$}
+      \State $i = i + 1$
+      \State exchange
+      $A[i]$ with     $A[j]$
+    \EndIf
+    \State exchange $A[i]$ with $A[r]$
+  \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+```
+
+@alg-quicksort is extracted from Chapter 7, Introduction to Algorithms (3rd edition).
+
+## Diagrams
+
+In addition of [quarto supported diagrams](https://quarto.org/docs/authoring/diagrams.html), we also support [tikz](https://www.overleaf.com/learn/latex/TikZ_package) diagrams. The following example^[This is the new syntax for cross-references since quarto 1.4, see [Crossreferenceable elements](https://quarto.org/docs/prerelease/1.4/crossref.html)] is rendered as follows.
+
+````markdown
+:::{#fig-tikz}
+
+``` {.tikz opt-additional-packages="\usetikzlibrary{arrows}"}
+\begin{tikzpicture}[node distance=2cm, auto, thick, scale=2, every node/.style={transform shape}]
+\node (P) {$P$};
+\node (B) [right of=P] {$B$};
+\node (A) [below of=P] {$A$};
+\node (C) [below of=B] {$C$};
+\node (P1) [node distance=1.4cm, left of=P, above of=P] {$\hat{P}$};
+\draw[->] (P) to node {$f$} (B);
+\draw[->] (P) to node [swap] {$g$} (A);
+\draw[->] (A) to node [swap] {$f$} (C);
+\draw[->] (B) to node {$g$} (C);
+\draw[->, bend right] (P1) to node [swap] {$\hat{g}$} (A);
+\draw[->, bend left] (P1) to node {$\hat{f}$} (B);
+\draw[->, dashed] (P1) to node {$k$} (P);
+\end{tikzpicture}
+```
+
+A simple example of a commutative diagram with $\texttt{tikz}$.
+
+:::
+````
+
+:::{#fig-tikz}
+
+``` {.tikz opt-additional-packages="\usetikzlibrary{arrows}"}
+\begin{tikzpicture}[node distance=2cm, auto, thick, scale=2, every node/.style={transform shape}]
+\node (P) {$P$};
+\node (B) [right of=P] {$B$};
+\node (A) [below of=P] {$A$};
+\node (C) [below of=B] {$C$};
+\node (P1) [node distance=1.4cm, left of=P, above of=P] {$\hat{P}$};
+\draw[->] (P) to node {$f$} (B);
+\draw[->] (P) to node [swap] {$g$} (A);
+\draw[->] (A) to node [swap] {$f$} (C);
+\draw[->] (B) to node {$g$} (C);
+\draw[->, bend right] (P1) to node [swap] {$\hat{g}$} (A);
+\draw[->, bend left] (P1) to node {$\hat{f}$} (B);
+\draw[->, dashed] (P1) to node {$k$} (P);
+\end{tikzpicture}
+```
+
+A simple example of a commutative diagram with $\texttt{tikz}$.
+
+:::
+
+You may refer to it as @fig-tikz.
+
+## Handling references {#sec-references}
+
+### Bibliographic references
+
+References are displayed as footnotes using [BibTeX](http://www.bibtex.org/), e.g. `[@computo]` will be displayed
+as [@computo], where `computo` is the bibtex key for this specific entry. The bibliographic information is automatically retrieved from
+the `.bib` file specified in the header of this document (here:`references.bib`).
+
+### Other cross-references
+
+As already (partially) seen, Quarto includes a mecanism similar to the bibliographic references for sections, equations, theorems, figures,
+lists, etc. Have a look at [this page](https://quarto.org/docs/authoring/cross-references.html).
+
+## To go further
+
+:::{.callout-note}
+### One last note
+To go into more involved details, you can also simply check the source code of this document (button at the top), or have a look at the source of our [t-sne remake example](https://computo.sfds.asso.fr/published-paper-tsne/).
+:::
+
+
+## Bibliography {.unnumbered}
+
+::: {#refs}
+:::
