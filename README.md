@@ -38,3 +38,7 @@ format:
 You can view a preview of the rendered HTML and PDF template at <https://computorg.github.io/computo-quarto-extension/> (for PDF, see "other formats" bnext to the TOC).
 
 
+## Example
+
+- PDF output is at https://stevengogogo.github.io/neurips-quarto-extension/template.pdf
+- HTML: https://stevengogogo.github.io/neurips-quarto-extension/
