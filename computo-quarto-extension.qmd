@@ -1,10 +1,9 @@
 ---
 title: "Computo Journal Format"
-subtitle: "To be used as template for contribution to Computo"
 date: 01/02/2023
 date-modified: last-modified
 author:
-  - name: The Computo Team
+  - name: John Joe
     corresponding: true
     email: computo@sfds.asso.fr
     url: https://computo.sfds.asso.fr
@@ -31,13 +30,13 @@ citation:
   issn: "2824-7795"
 bibliography: references.bib
 google-scholar: true
-github-user: computorg
-repo: "computo-quarto-extension"
+github-user: stevengogogo
+repo: "neurips-template-enhanced"
 draft: true # set to false once the build is running
 published: false # will be set to true once accepted
 format:
-  computo-pdf: default
-  computo-html: default
+  neurips-pdf: default
+  neurips-html: default
 ---
 
 # Abstract
@@ -53,10 +52,15 @@ This document provides a template based on the [quarto system](https://quarto.or
 This section covers basic formatting guidelines. [Quarto](https://quarto.org/) is a versatile  formatting system for authoring HTML based on markdown, integrating {{< latex >}} and various code block interpreted either via Jupyter or Knitr (and thus deal with Python, R and many other langages). It relies on the [Pandoc Markdown](https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) markup language. 
 
 :::{.callout-note}
+
+## Block title 1 
+
 We will only give some formatting elements. Authors can refer to the [Quarto web page](https://quarto.org/) for a complete view of the formatting possibilities.
 :::
 
-:::{.callout-note}
+:::{.callout-info}
+## Block title 2 
+
 Quarto itself is a work-in-progress and a lot of bugs are constantly fixed or features added. As such, we recommend:
 
 - searching any encountered issue with renders in [the upstream quarto dev repo](https://github.com/quarto-dev/quarto-cli/issues)
@@ -160,42 +164,16 @@ x <- rnorm(10)
 
 ### Python
 
-```{python}
-#| label: fig-plotly
-#| fig-cap: "A simple python plotly example"
-import plotly.express as px
-df = px.data.tips()
-fig = px.histogram(df, x="total_bill", y="tip", color="sex",
-                   marginal="box", # or violin, rug
-                   hover_data=df.columns)
-fig
-```
 
 ## Figures
 
 Plots can be generated as follows and referenced. See plot @fig-gg:
 
-```{r}
-#| label: fig-gg
-#| fig-cap: "A simple ggplot example"
-#| message: false
-library("ggplot2")
-p <- ggplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  geom_smooth() + theme_bw()
-p
-```
+
 
 Interactive plots may also be produced in the HTML output of the document^[The pdf output is just a screenshot of the interactive plot from the html output]:
 
-```{r}
-#| label: fig-ggplotly
-#| fig-cap: "A simple ggplotly interactive example"
-#| message: false
-#| warning: false
-library("plotly")
-ggplotly(p)
-```
+
 
 It is also possible to create figures from static images:
 
@@ -353,10 +331,10 @@ A solution to typeset pseudocode just like you would do with {{< latex >}}, yet 
 
 In addition of [quarto supported diagrams](https://quarto.org/docs/authoring/diagrams.html), we also support [tikz](https://www.overleaf.com/learn/latex/TikZ_package) diagrams. The following example^[This is the new syntax for cross-references since quarto 1.4, see [Crossreferenceable elements](https://quarto.org/docs/prerelease/1.4/crossref.html)] is rendered as follows.
 
-````markdown
-:::{#fig-tikz}
-
-``` {.tikz opt-additional-packages="\usetikzlibrary{arrows}"}
+```{r, engine = 'tikz'}
+#| label: fig-tikz
+#| caption: A Tikz figure
+#| echo: false
 \begin{tikzpicture}[node distance=2cm, auto, thick, scale=2, every node/.style={transform shape}]
 \node (P) {$P$};
 \node (B) [right of=P] {$B$};
@@ -375,31 +353,6 @@ In addition of [quarto supported diagrams](https://quarto.org/docs/authoring/dia
 
 A simple example of a commutative diagram with $\texttt{tikz}$.
 
-:::
-````
-
-:::{#fig-tikz}
-
-``` {.tikz opt-additional-packages="\usetikzlibrary{arrows}"}
-\begin{tikzpicture}[node distance=2cm, auto, thick, scale=2, every node/.style={transform shape}]
-\node (P) {$P$};
-\node (B) [right of=P] {$B$};
-\node (A) [below of=P] {$A$};
-\node (C) [below of=B] {$C$};
-\node (P1) [node distance=1.4cm, left of=P, above of=P] {$\hat{P}$};
-\draw[->] (P) to node {$f$} (B);
-\draw[->] (P) to node [swap] {$g$} (A);
-\draw[->] (A) to node [swap] {$f$} (C);
-\draw[->] (B) to node {$g$} (C);
-\draw[->, bend right] (P1) to node [swap] {$\hat{g}$} (A);
-\draw[->, bend left] (P1) to node {$\hat{f}$} (B);
-\draw[->, dashed] (P1) to node {$k$} (P);
-\end{tikzpicture}
-```
-
-A simple example of a commutative diagram with $\texttt{tikz}$.
-
-:::
 
 You may refer to it as @fig-tikz.
 
