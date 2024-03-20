@@ -328,6 +328,8 @@ A solution to typeset pseudocode just like you would do with {{< latex >}}, yet 
 
 In addition of [quarto supported diagrams](https://quarto.org/docs/authoring/diagrams.html), we also support [tikz](https://www.overleaf.com/learn/latex/TikZ_package) diagrams. The following example^[This is the new syntax for cross-references since quarto 1.4, see [Crossreferenceable elements](https://quarto.org/docs/prerelease/1.4/crossref.html)] is rendered as follows.
 
+For learning TiKZ, I recommend this website: [Tikz examples](https://tikz.dev/).
+
 ```{r, engine = 'tikz'}
 #| label: fig-tikz
 #| caption: A Tikz figure
