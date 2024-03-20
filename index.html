@@ -599,7 +599,7 @@ Table&nbsp;1: my table caption
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="in">\end{algorithmic}</span></span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="in">\end{algorithm}</span></span>
 <span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="alg-quicksort" class="pseudocode-container" data-line-number="true" data-no-end="false" data-indent-size="1.2em" data-alg-title="Algorithm" data-pseudocode-index="1" data-line-number-punc=":" data-comment-delimiter="//">
+<div id="alg-quicksort" class="pseudocode-container" data-line-number="true" data-pseudocode-index="1" data-no-end="false" data-line-number-punc=":" data-indent-size="1.2em" data-comment-delimiter="//" data-alg-title="Algorithm">
 <div class="pseudocode">
 \begin{algorithm} \caption{Quicksort} \begin{algorithmic} \Procedure{Quicksort}{$A, p, r$} \If{$p &lt; r$} \State $q = $ \Call{Partition}{$A, p, r$} \State \Call{Quicksort}{$A, p, q - 1$} \State \Call{Quicksort}{$A, q + 1, r$} \EndIf \EndProcedure \Procedure{Partition}{$A, p, r$} \State $x = A[r]$ \State $i = p - 1$ \For{$j = p, \dots, r - 1$} \If{$A[j] &lt; x$} \State $i = i + 1$ \State exchange $A[i]$ with $A[j]$ \EndIf \State exchange $A[i]$ with $A[r]$ \EndFor \EndProcedure \end{algorithmic} \end{algorithm}
 </div>
