@@ -55,7 +55,7 @@ contributes:
       tbl-prefix: Table
       html-math-method: mathjax
       template-partials:
-        - "partials/html/title-block.html"
+        #- "partials/html/title-block.html"
         - "partials/html/title-metadata.html"
     pdf:
       documentclass: article

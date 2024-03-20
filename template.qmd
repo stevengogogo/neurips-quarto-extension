@@ -1,6 +1,6 @@
 ---
-title: "Computo Journal Format"
-date: 01/02/2023
+title: "NeurIPS Journal Format"
+date: today
 date-modified: last-modified
 author:
   - name: John Joe
@@ -9,12 +9,9 @@ author:
     url: https://computo.sfds.asso.fr
     orcid: 0000-0000-0000-0000
     affiliations:
-      - name: Société Française de Statistique
-        department: Statistique
-        address: IHP
-        city: Paris
-        country: France
-        postal-code: 75005
+      - name: Texas A&M University
+        department: Electrical and Computer Engineering
+        address: College Station, TX 77843, USA
   - name: a friend
     affiliations:
       - Another Affiliation
@@ -24,7 +21,7 @@ keywords: [template, quarto, R, Python, reproductibility]
 doi: 10.xxxx/xxx-xxx
 citation:
   type: article-journal
-  container-title: "Computo"
+  container-title: "NeurIPS"
   doi: "10.xxxx/xxx-xxx"
   url: "https://github.com/computorg/computo-quarto-extension"
   issn: "2824-7795"
