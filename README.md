@@ -20,6 +20,18 @@ You may also use this format with an existing Quarto project or document. From t
 quarto add stevengogogo/neurips-quarto-extension
 ```
 
+## Installation for side packages
+
+1. [TinyLatex](https://quarto.org/docs/output-formats/pdf-engine.html)
+   ```bash
+   quarto install tinytex --update-path
+   ```
+1. [dviscgm](https://dvisvgm.de/Downloads/)
+1. [R installabion with Conda](https://docs.anaconda.com/free/working-with-conda/packages/using-r-language/)
+1. [R package installation](https://www.geeksforgeeks.org/how-to-install-a-package-in-r/)
+  - This is required when R package is missing in the environment
+1. [Required python pakcage](environment.yml)
+
 ## Usage
 
 To use the format, you can use the format names `computo-html`. For example:
