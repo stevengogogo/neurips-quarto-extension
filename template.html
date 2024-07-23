@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.25">
+<meta name="generator" content="quarto-1.6.3">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Joe">
 <meta name="author" content="a friend">
-<meta name="dcterms.date" content="2024-03-20">
+<meta name="dcterms.date" content="2024-07-23">
 <meta name="keywords" content="template, quarto, R, Python, reproductibility">
 <meta name="description" content="This document provides a template based on the quarto system for contributions to Computo. The github repository in itself provides a specific quarto extension useful for authors (and editors!).">
 
@@ -38,7 +38,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -147,10 +147,10 @@ window.Quarto = {
 <meta name="citation_keywords" content="template,quarto,R,Python,reproductibility">
 <meta name="citation_author" content="John Joe">
 <meta name="citation_author" content="a friend">
-<meta name="citation_publication_date" content="2024-03-20">
-<meta name="citation_cover_date" content="2024-03-20">
+<meta name="citation_publication_date" content="2024-07-23">
+<meta name="citation_cover_date" content="2024-07-23">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-03-20">
+<meta name="citation_online_date" content="2024-07-23">
 <meta name="citation_fulltext_html_url" content="https://github.com/computorg/computo-quarto-extension">
 <meta name="citation_doi" content="10.xxxx/xxx-xxx">
 <meta name="citation_issn" content="2824-7795">
@@ -211,14 +211,14 @@ ISSN 2824-7795</p>
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 20, 2024</p>
+        <p class="date">July 23, 2024</p>
       </div>
     </div>
                                     
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 20, 2024</p>
+        <p class="date-modified">July 23, 2024</p>
       </div>
     </div>
       
@@ -411,7 +411,7 @@ x_L \\ x_N \end{array}\right] \\
 <p>Plots can be generated as follows and referenced. See plot <strong>?@fig-gg</strong>:</p>
 <p>Interactive plots may also be produced in the HTML output of the document<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <p>It is also possible to create figures from static images:</p>
-<div id="fig-logo" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-logo" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/sfds.png" class="img-fluid figure-img">
@@ -433,13 +433,13 @@ Figure&nbsp;1: SFdS logo (c.a. 2021)
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>| col 2 is |    centered   |   $12 |</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>| col 3 is | right-aligned |    $1 |</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>: my table caption {#tbl-mylabel}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-mylabel" class="quarto-float anchored">
+<div id="tbl-mylabel" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mylabel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: my table caption
 </figcaption>
 <div aria-describedby="tbl-mylabel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Tables</th>
@@ -484,7 +484,7 @@ Table&nbsp;1: my table caption
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>- row 3, column 1</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>row 3, column 2</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>row 1, column 1</th>
@@ -515,7 +515,7 @@ Table&nbsp;1: my table caption
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(cars), <span class="at">caption =</span> <span class="st">"Table caption."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table caption.</caption>
 <thead>
 <tr class="header">
@@ -599,7 +599,7 @@ Table&nbsp;1: my table caption
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="in">\end{algorithmic}</span></span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="in">\end{algorithm}</span></span>
 <span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="alg-quicksort" class="pseudocode-container" data-line-number="true" data-pseudocode-index="1" data-no-end="false" data-line-number-punc=":" data-indent-size="1.2em" data-comment-delimiter="//" data-alg-title="Algorithm">
+<div id="alg-quicksort" class="pseudocode-container" data-comment-delimiter="//" data-line-number-punc=":" data-no-end="false" data-indent-size="1.2em" data-line-number="true" data-pseudocode-index="1" data-alg-title="Algorithm">
 <div class="pseudocode">
 \begin{algorithm} \caption{Quicksort} \begin{algorithmic} \Procedure{Quicksort}{$A, p, r$} \If{$p &lt; r$} \State $q = $ \Call{Partition}{$A, p, r$} \State \Call{Quicksort}{$A, p, q - 1$} \State \Call{Quicksort}{$A, q + 1, r$} \EndIf \EndProcedure \Procedure{Partition}{$A, p, r$} \State $x = A[r]$ \State $i = p - 1$ \For{$j = p, \dots, r - 1$} \If{$A[j] &lt; x$} \State $i = i + 1$ \State exchange $A[i]$ with $A[j]$ \EndIf \State exchange $A[i]$ with $A[r]$ \EndFor \EndProcedure \end{algorithmic} \end{algorithm}
 </div>
@@ -612,13 +612,12 @@ Table&nbsp;1: my table caption
 <p>For learning TiKZ, I recommend this website: <a href="https://tikz.dev/">Tikz examples</a>.</p>
 <div class="cell" data-caption="A Tikz figure">
 <div class="cell-output-display">
-<div id="fig-tikz" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-tikz" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tikz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="template_files/figure-html/fig-tikz-1.svg" id="fig-tikz" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-tikz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2
 </figcaption>
 </figure>
 </div>
@@ -689,7 +688,7 @@ Ushey, Kevin, JJ Allaire, and Yuan Tang. 2020. <em>Reticulate: Interface to Pyth
   author = {Joe, John and friend, a},
   title = {NeurIPS {Journal} {Format}},
   journal = {NeurIPS},
-  date = {2024-03-20},
+  date = {2024-07-23},
   url = {https://github.com/computorg/computo-quarto-extension},
   doi = {10.xxxx/xxx-xxx},
   issn = {2824-7795},
@@ -697,7 +696,7 @@ Ushey, Kevin, JJ Allaire, and Yuan Tang. 2020. <em>Reticulate: Interface to Pyth
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-joe2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Joe, John, and a friend. 2024. <span>“NeurIPS Journal Format.”</span>
-<em>NeurIPS</em>, March. <a href="https://doi.org/10.xxxx/xxx-xxx">https://doi.org/10.xxxx/xxx-xxx</a>.
+<em>NeurIPS</em>, July. <a href="https://doi.org/10.xxxx/xxx-xxx">https://doi.org/10.xxxx/xxx-xxx</a>.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
