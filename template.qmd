@@ -12,9 +12,24 @@ author:
       - name: Texas A&M University
         department: Electrical and Computer Engineering
         address: College Station, TX 77843, USA
-  - name: a friend
+  - name: John Joe
+    corresponding: true
+    email: computo@sfds.asso.fr
+    url: https://computo.sfds.asso.fr
+    orcid: 0000-0000-0000-0000
     affiliations:
-      - Another Affiliation
+      - name: Texas A&M University
+        department: Electrical and Computer Engineering
+        address: College Station, TX 77843, USA
+  - name: John Joe
+    corresponding: true
+    email: computo@sfds.asso.fr
+    url: https://computo.sfds.asso.fr
+    orcid: 0000-0000-0000-0000
+    affiliations:
+      - name: Texas A&M University
+        department: Electrical and Computer Engineering
+        address: College Station, TX 77843, USA
 description: |
   This document provides a template based on the quarto system for contributions to Computo. The github repository in itself provides a specific quarto extension useful for authors (and editors!).
 keywords: [template, quarto, R, Python, reproductibility]
@@ -32,7 +47,8 @@ repo: "neurips-template-enhanced"
 draft: true # set to false once the build is running
 published: false # will be set to true once accepted
 format:
-  neurips-pdf: default
+  neurips-pdf: 
+    keep-tex: true
   neurips-html: default
 ---
 
